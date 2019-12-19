@@ -7,13 +7,13 @@ namespace IndividualCapStoneSAWebApplication.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class secondmigration : IMigrationMetadata
+    public sealed partial class FirstMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(secondmigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201912182121372_secondmigration"; }
+            get { return "201912191650079_FirstMigration"; }
         }
         
         string IMigrationMetadata.Source

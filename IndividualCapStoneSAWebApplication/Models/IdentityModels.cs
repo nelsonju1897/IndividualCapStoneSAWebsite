@@ -21,6 +21,16 @@ namespace IndividualCapStoneSAWebApplication.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<AssaultRecord> AssaultRecords { get; set;}
+        public DbSet<AlcoholAndOrDrugs> AlcoholAndOrDrugs { get; set; }
+        public DbSet<AssaultLocation> AssaultLocation { get; set; }
+        public DbSet<AssaultType> AssaultType { get; set; }
+        public DbSet<AttackerRelationship> AttackerRelationship { get; set; }
+        public DbSet<MessageBoard> MessageBoard { get; set; }
+        public DbSet<PrivateJournal> PrivateJournal { get; set; }
+        public DbSet<Sponsor> Sponsor { get; set; }
+        public DbSet<SponsorGroup> SponsorGroup { get; set; }
+        public DbSet<Survivor> Survivor { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
