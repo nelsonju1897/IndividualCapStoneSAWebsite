@@ -11,7 +11,10 @@ namespace IndividualCapStoneSAWebApplication.Models
     {
         [Key]
         public int MessageBoardId { get; set; }
+        [Display(Name ="Message Board Title")]
         public string MessageBoardName { get; set; }
+        [Display(Name = "Enter Your Story Here")]
+        public string MessageBoardEntry { get; set; }
         [ForeignKey("Survivor")]
         public int SurvivorId { get; set; }
         public Survivor Survivor { get; set; }

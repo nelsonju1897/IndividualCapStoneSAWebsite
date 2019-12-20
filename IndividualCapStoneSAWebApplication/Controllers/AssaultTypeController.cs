@@ -1,48 +1,46 @@
 ﻿using IndividualCapStoneSAWebApplication.Models;
-using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace IndividualCapStoneSAWebApplication.Controllers
-{    
-    public class SurvivorController : Controller
+{
+    public class AssaultTypeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        // GET: Survivor
+        // GET: AssaultType
+        public ActionResult GetAssaultTypes()
+        {
+            var assaultTypes = db.AssaultType.ToList();
+            return View(assaultTypes);
+        }
         public ActionResult Index()
         {
-            string userId = User.Identity.GetUserId();
-            return View(db.Survivor.Where(c => c.ApplicationId == userId).ToList());
+            return View();
         }
 
-        // GET: Survivor/Details/5
+        // GET: AssaultType/Details/5
         public ActionResult Details(int id)
         {
-            Survivor survivor = db.Survivor.Find(id);
-            return View(survivor);
+            return View();
         }
 
-        // GET: Survivor/Create
+        // GET: AssaultType/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Survivor/Create
+        // POST: AssaultType/Create
         [HttpPost]
         public ActionResult Create([Bind(Include = "SurvivorId,FirstName,LastName,EmergencyContactNumber,EmailAddress,ApplicationId")]Survivor survivor)
         {
             try
             {
                 // TODO: Add insert logic here
-                string userId = User.Identity.GetUserId();
-                survivor.ApplicationId = userId;
-                db.Survivor.Add(survivor);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch
@@ -51,22 +49,20 @@ namespace IndividualCapStoneSAWebApplication.Controllers
             }
         }
 
-        // GET: Survivor/Edit/5
+        // GET: AssaultType/Edit/5
         public ActionResult Edit(int id)
         {
-            Survivor survivor = db.Survivor.Find(id);
-            return View(survivor);
+            return View();
         }
 
-        // POST: Survivor/Edit/5
+        // POST: AssaultType/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "SurvivorId,FirstName,LastName,EmergencyContactNumber,EmailAddress,ApplicationId")]Survivor survivor)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-                db.Entry(survivor).State = EntityState.Modified;
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch
@@ -75,23 +71,20 @@ namespace IndividualCapStoneSAWebApplication.Controllers
             }
         }
 
-        // GET: Survivor/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: AssaultType/Delete/5
+        public ActionResult Delete(int id)
         {
-            Survivor survivor = db.Survivor.Find(id);
-            return View(survivor);
+            return View();
         }
 
-        // POST: Survivor/Delete/5
+        // POST: AssaultType/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                Survivor survivor = db.Survivor.Find(id);
-                db.Survivor.Remove(survivor);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             catch

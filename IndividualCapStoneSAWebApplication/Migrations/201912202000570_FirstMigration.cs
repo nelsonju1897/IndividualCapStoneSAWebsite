@@ -75,6 +75,7 @@ namespace IndividualCapStoneSAWebApplication.Migrations
                         LastName = c.String(),
                         EmergencyContactNumber = c.String(),
                         EmailAddress = c.String(),
+                        isSponsor = c.Boolean(nullable: false),
                         ApplicationId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.SurvivorId)
@@ -145,6 +146,7 @@ namespace IndividualCapStoneSAWebApplication.Migrations
                     {
                         MessageBoardId = c.Int(nullable: false, identity: true),
                         MessageBoardName = c.String(),
+                        MessageBoardEntry = c.String(),
                         SurvivorId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.MessageBoardId)

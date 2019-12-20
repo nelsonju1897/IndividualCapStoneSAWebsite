@@ -1,0 +1,58 @@
+﻿@model IndividualCapStoneSAWebApplication.Models.AssaultRecord
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssaultRecord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SurvivorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurvivorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssaultTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssaultTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssaultLocationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssaultLocationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttackerRelationshipId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttackerRelationshipId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlcoholAndOrDrugId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlcoholAndOrDrugId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AssaultRecordId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

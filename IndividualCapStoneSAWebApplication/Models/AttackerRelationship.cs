@@ -11,5 +11,6 @@ namespace IndividualCapStoneSAWebApplication.Models
         [Key]
         public int AttackerRelationshipId { get; set; }
         public string AttackerRelationshipName { get; set; }
+        public IEnumerable<AttackerRelationship> AttackerRelationships { get; set; }
     }
 }
