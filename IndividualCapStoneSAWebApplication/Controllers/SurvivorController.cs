@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace IndividualCapStoneSAWebApplication.Controllers
-{    
+{
     public class SurvivorController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -60,7 +60,7 @@ namespace IndividualCapStoneSAWebApplication.Controllers
 
         // POST: Survivor/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "SurvivorId,FirstName,LastName,EmergencyContactNumber,EmailAddress,ApplicationId")]Survivor survivor)
+        public ActionResult Edit([Bind(Include = "SurvivorId,FirstName,LastName,EmergencyContactNumber,EmailAddress,ApplicationId, requestToBeSponsor")]Survivor survivor)
         {
             try
             {
@@ -98,6 +98,20 @@ namespace IndividualCapStoneSAWebApplication.Controllers
             {
                 return View();
             }
+        }
+        [HttpGet]
+        public ActionResult RequestSponsorship(int id)
+        {
+            Survivor survivor = db.Survivor.Find(id);
+            return View(id);
+        }
+
+        [HttpPost]
+        public ActionResult RequestSponsorship([Bind(Include = "requestToBeSponsor")] Survivor survivor)
+        {
+            db.Entry(survivor).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -76,6 +76,7 @@ namespace IndividualCapStoneSAWebApplication.Migrations
                         EmergencyContactNumber = c.String(),
                         EmailAddress = c.String(),
                         isSponsor = c.Boolean(nullable: false),
+                        requestToBeSponsor = c.Boolean(nullable: false),
                         ApplicationId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.SurvivorId)

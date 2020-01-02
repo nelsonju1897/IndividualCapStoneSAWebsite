@@ -21,6 +21,7 @@ namespace IndividualCapStoneSAWebApplication.Models
         [DisplayName("Email Address")]
         public string EmailAddress { get; set; }
         public bool isSponsor { get; set; }
+        public bool requestToBeSponsor { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }

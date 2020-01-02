@@ -1,73 +1,59 @@
 ﻿@model IndividualCapStoneSAWebApplication.Models.AssaultRecord
 
-@{
-    ViewBag.Title = "Create";
-}
-
-<h2>Create</h2>
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <h4>AssaultRecord</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.HiddenFor(model => model.SurvivorId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.HiddenFor(model => model.SurvivorId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SurvivorId, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>AssaultRecord</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.HiddenFor(model => model.SurvivorId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.SurvivorId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SurvivorId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.AssaultType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.AssaultType, (SelectList)ViewBag.AssaultTypes)
-            @Html.ValidationMessageFor(model => model.AssaultType, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AssaultTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AssaultTypeId, (SelectList)ViewBag.AssaultTypes)
+                @Html.ValidationMessageFor(model => model.AssaultTypeId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.AssaultLocation, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.AssaultLocation, (SelectList)ViewBag.AssaultLocation)
-            @Html.ValidationMessageFor(model => model.AssaultLocationId, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AssaultLocation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AssaultLocationId, (SelectList)ViewBag.AssaultLocation)
+                @Html.ValidationMessageFor(model => model.AssaultLocationId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.AttackerRelationshipId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AttackerRelationshipId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AttackerRelationshipId, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AttackerRelationshipId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AttackerRelationshipId, (SelectList)ViewBag.Relationships)
+                @Html.ValidationMessageFor(model => model.AttackerRelationshipId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>*@
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.AlcoholAndOrDrugId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.AlcoholAndOrDrugs, (SelectList)ViewBag.AlcoholAndOrDrugs)
-            @Html.ValidationMessageFor(model => model.AlcoholAndOrDrugId, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AlcoholAndOrDrugId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AlcoholAndOrDrugId, (SelectList)ViewBag.AlcoholAndOrDrugs)
+                @Html.ValidationMessageFor(model => model.AlcoholAndOrDrugId, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-    @*@Html.CheckBox("AssaultTypes", false)*@
-    <div class="form-group">
-        @Html.LabelFor(model => model.AttackerRelationship, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.AttackerRelationship, (SelectList)ViewBag.Relationships)
-            @Html.ValidationMessageFor(model => model.AttackerRelationshipId, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
 }
 
 <div>

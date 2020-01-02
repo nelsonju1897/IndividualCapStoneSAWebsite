@@ -14,7 +14,7 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         // GET: AssaultRecord
         public ActionResult Index()
         {
-            return View();
+            return View(db.AssaultRecords.ToList());
         }
 
         // GET: AssaultRecord/Details/5
@@ -26,16 +26,20 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         // GET: AssaultRecord/Create
         public ActionResult Create()
         {
-            ViewBag.Relationships = new SelectList(db.AttackerRelationship.ToList(), "AttackerRelationshipName", "AttackerRelationshipName");
-            ViewBag.AssaultTypes = new SelectList(db.AssaultType.ToList(), "AssaultTypeName", "AssaultTypeName");
-            ViewBag.AlcoholAndOrDrugs = new SelectList(db.AlcoholAndOrDrugs.ToList(), "AlcoholAndOrDrugsName", "AlcoholAndOrDrugsName");
-            ViewBag.AssaultLocation = new SelectList(db.AssaultLocation.ToList(), "AssaultLocationName", "AssaultLocationName");
-            return View();
+            AssaultRecord assaultRecord = new AssaultRecord();
+            var userId = User.Identity.GetUserId();
+            Survivor survivor = db.Survivor.FirstOrDefault(s => s.ApplicationId == userId);
+            assaultRecord.SurvivorId = survivor.SurvivorId;
+            ViewBag.Relationships = new SelectList(db.AttackerRelationship.ToList(), "AttackerRelationshipId", "AttackerRelationshipName");
+            ViewBag.AssaultTypes = new SelectList(db.AssaultType.ToList(), "AssaultTypeId", "AssaultTypeName");
+            ViewBag.AlcoholAndOrDrugs = new SelectList(db.AlcoholAndOrDrugs.ToList(), "AlcoholAndOrDrugsId", "AlcoholAndOrDrugsName");
+            ViewBag.AssaultLocation = new SelectList(db.AssaultLocation.ToList(), "AssaultLocationId", "AssaultLocationName");
+            return View(assaultRecord);
         }
 
         // POST: AssaultRecord/Create
         [HttpPost]
-        public ActionResult Create(AssaultRecord assaultRecord)
+        public ActionResult Create([Bind(Include ="AssaultRecordId, SurvivorId, AssaultLocationId, AssaultTypeId, AttackerRelationshipId, AlcoholAndOrDrugId")]AssaultRecord assaultRecord)
         {
             try
             {
@@ -49,10 +53,10 @@ namespace IndividualCapStoneSAWebApplication.Controllers
             }
             catch
             {
-                ViewBag.Relationships = new SelectList(db.AttackerRelationship.ToList(), "AttackerRelationshipName", "AttackerRelationshipName");
-                ViewBag.AssaultTypes = new SelectList(db.AssaultType.ToList(), "AssaultTypeName", "AssaultTypeName");
-                ViewBag.AlcoholAndOrDrugs = new SelectList(db.AlcoholAndOrDrugs.ToList(), "AlcoholAndOrDrugsName", "AlcoholAndOrDrugsName");
-                ViewBag.AssaultLocation = new SelectList(db.AssaultLocation.ToList(), "AssaultLocationName", "AssaultLocationName");
+                ViewBag.Relationships = new SelectList(db.AttackerRelationship.ToList(), "AttackerRelationshipId", "AttackerRelationshipName");
+                ViewBag.AssaultTypes = new SelectList(db.AssaultType.ToList(), "AssaultTypeId", "AssaultTypeName");
+                ViewBag.AlcoholAndOrDrugs = new SelectList(db.AlcoholAndOrDrugs.ToList(), "AlcoholAndOrDrugsId", "AlcoholAndOrDrugsName");
+                ViewBag.AssaultLocation = new SelectList(db.AssaultLocation.ToList(), "AssaultLocationId", "AssaultLocationName");
                 return View();
             }
         }

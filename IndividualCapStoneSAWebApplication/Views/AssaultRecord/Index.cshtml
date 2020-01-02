@@ -1,8 +1,45 @@
-﻿@model IndividualCapStoneSAWebApplication.Models.AssaultRecord
+﻿@model IEnumerable<IndividualCapStoneSAWebApplication.Models.AssaultRecord>
 
-@{
-    ViewBag.Title = "Index";
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssaultType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssaultLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttackerRelationship)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlcoholAndOrDrugs)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssaultTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssaultLocationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttackerRelationshipId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlcoholAndOrDrugId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssaultRecordId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssaultRecordId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssaultRecordId })
+        </td>
+    </tr>
 }
 
-<h2>Index</h2>
-
+</table>
