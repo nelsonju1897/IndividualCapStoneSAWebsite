@@ -1,6 +1,8 @@
 ﻿using IndividualCapStoneSAWebApplication.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +15,9 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         // GET: PrivateJournal
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            Survivor survivor = db.Survivor.FirstOrDefault(s => s.ApplicationId == userId);
+            return View(db.PrivateJournal.Where(c => c.SurvivorId == survivor.SurvivorId).ToList());
         }
 
         // GET: PrivateJournal/Details/5
@@ -30,12 +34,16 @@ namespace IndividualCapStoneSAWebApplication.Controllers
 
         // POST: PrivateJournal/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = "PrivateJournalId, PrivateJournalName, JournalEntry, SurvivorId")]PrivateJournal privateJournal)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                var userId = User.Identity.GetUserId();
+                Survivor survivor = db.Survivor.FirstOrDefault(s => s.ApplicationId == userId);
+                privateJournal.SurvivorId = survivor.SurvivorId;
+                db.PrivateJournal.Add(privateJournal);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -47,17 +55,19 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         // GET: PrivateJournal/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            PrivateJournal privateJournal = db.PrivateJournal.Find(id);
+            return View(privateJournal);
         }
 
         // POST: PrivateJournal/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit([Bind(Include = "PrivateJournalId, PrivateJournalName, JournalEntry, SurvivorId")]PrivateJournal privateJournal)
         {
             try
             {
                 // TODO: Add update logic here
-
+                db.Entry(privateJournal).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -67,19 +77,22 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         }
 
         // GET: PrivateJournal/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            PrivateJournal privateJournal = db.PrivateJournal.Find(id);
+            return View(privateJournal);
         }
 
         // POST: PrivateJournal/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                PrivateJournal privateJournal = db.PrivateJournal.Find(id);
+                db.PrivateJournal.Remove(privateJournal);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch

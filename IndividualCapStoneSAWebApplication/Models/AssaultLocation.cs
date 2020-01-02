@@ -11,5 +11,6 @@ namespace IndividualCapStoneSAWebApplication.Models
         [Key]
         public int AssaultLocationId { get; set; }
         public string AssaultLocationName { get; set; }
+        public IEnumerable<AssaultLocation> AssaultLocations { get; set; }
     }
 }

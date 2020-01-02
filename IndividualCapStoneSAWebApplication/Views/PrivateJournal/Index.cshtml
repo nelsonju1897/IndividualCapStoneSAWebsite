@@ -1,0 +1,33 @@
+﻿@model IEnumerable<IndividualCapStoneSAWebApplication.Models.PrivateJournal>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PrivateJournalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JournalEntry)
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrivateJournalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JournalEntry)
+        </td>        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PrivateJournalId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PrivateJournalId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PrivateJournalId })
+        </td>
+    </tr>
+}
+
+</table>

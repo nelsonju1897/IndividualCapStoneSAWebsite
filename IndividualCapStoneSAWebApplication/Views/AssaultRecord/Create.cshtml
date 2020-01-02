@@ -15,50 +15,50 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.SurvivorId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.HiddenFor(model => model.SurvivorId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.SurvivorId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.SurvivorId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.SurvivorId, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.AssaultTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.AssaultType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.AssaultTypeId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AssaultTypeId, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.AssaultType, (SelectList)ViewBag.AssaultTypes)
+            @Html.ValidationMessageFor(model => model.AssaultType, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.AssaultLocationId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.AssaultLocation, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.AssaultLocationId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownListFor(model => model.AssaultLocation, (SelectList)ViewBag.AssaultLocation)
             @Html.ValidationMessageFor(model => model.AssaultLocationId, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.AttackerRelationshipId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.AttackerRelationshipId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.AttackerRelationshipId, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.AlcoholAndOrDrugId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.AlcoholAndOrDrugId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownListFor(model => model.AlcoholAndOrDrugs, (SelectList)ViewBag.AlcoholAndOrDrugs)
             @Html.ValidationMessageFor(model => model.AlcoholAndOrDrugId, "", new { @class = "text-danger" })
         </div>
     </div>
-    @Html.CheckBox("Thing", false)
+    @*@Html.CheckBox("AssaultTypes", false)*@
     <div class="form-group">
         @Html.LabelFor(model => model.AttackerRelationship, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.AttackerRelationship, (SelectList)ViewBag.Relationships)
-            @Html.ValidationMessageFor(model => model.AlcoholAndOrDrugId, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.AttackerRelationshipId, "", new { @class = "text-danger" })
         </div>
     </div>
 

@@ -21,7 +21,8 @@ namespace IndividualCapStoneSAWebApplication.Migrations
             context.AlcoholAndOrDrugs.AddOrUpdate
                 (
                 new Models.AlcoholAndOrDrugs { AlcoholAndOrDrugsId = 1, AlcoholAndOrDrugsName = "Alcohol" },
-                new Models.AlcoholAndOrDrugs { AlcoholAndOrDrugsId = 2, AlcoholAndOrDrugsName = "Drugs" }
+                new Models.AlcoholAndOrDrugs { AlcoholAndOrDrugsId = 2, AlcoholAndOrDrugsName = "Drugs" },
+                new Models.AlcoholAndOrDrugs { AlcoholAndOrDrugsId = 3, AlcoholAndOrDrugsName = "Both"}
                 );
             context.AssaultLocation.AddOrUpdate
                 (

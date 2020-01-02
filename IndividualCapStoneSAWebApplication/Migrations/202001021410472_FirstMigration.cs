@@ -158,6 +158,7 @@ namespace IndividualCapStoneSAWebApplication.Migrations
                 c => new
                     {
                         PrivateJournalId = c.Int(nullable: false, identity: true),
+                        PrivateJournalName = c.String(),
                         JournalEntry = c.String(),
                         SurvivorId = c.Int(nullable: false),
                     })

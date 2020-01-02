@@ -13,7 +13,7 @@ namespace IndividualCapStoneSAWebApplication.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201912202000570_FirstMigration"; }
+            get { return "202001021410472_FirstMigration"; }
         }
         
         string IMigrationMetadata.Source

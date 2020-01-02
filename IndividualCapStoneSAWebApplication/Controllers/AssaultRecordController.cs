@@ -1,4 +1,5 @@
 ﻿using IndividualCapStoneSAWebApplication.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,21 +27,32 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         public ActionResult Create()
         {
             ViewBag.Relationships = new SelectList(db.AttackerRelationship.ToList(), "AttackerRelationshipName", "AttackerRelationshipName");
+            ViewBag.AssaultTypes = new SelectList(db.AssaultType.ToList(), "AssaultTypeName", "AssaultTypeName");
+            ViewBag.AlcoholAndOrDrugs = new SelectList(db.AlcoholAndOrDrugs.ToList(), "AlcoholAndOrDrugsName", "AlcoholAndOrDrugsName");
+            ViewBag.AssaultLocation = new SelectList(db.AssaultLocation.ToList(), "AssaultLocationName", "AssaultLocationName");
             return View();
         }
 
         // POST: AssaultRecord/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection, bool Thing)
+        public ActionResult Create(AssaultRecord assaultRecord)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                var userId = User.Identity.GetUserId();
+                Survivor survivor = db.Survivor.FirstOrDefault(s => s.ApplicationId == userId);
+                assaultRecord.SurvivorId = survivor.SurvivorId;
+                db.AssaultRecords.Add(assaultRecord);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Relationships = new SelectList(db.AttackerRelationship.ToList(), "AttackerRelationshipName", "AttackerRelationshipName");
+                ViewBag.AssaultTypes = new SelectList(db.AssaultType.ToList(), "AssaultTypeName", "AssaultTypeName");
+                ViewBag.AlcoholAndOrDrugs = new SelectList(db.AlcoholAndOrDrugs.ToList(), "AlcoholAndOrDrugsName", "AlcoholAndOrDrugsName");
+                ViewBag.AssaultLocation = new SelectList(db.AssaultLocation.ToList(), "AssaultLocationName", "AssaultLocationName");
                 return View();
             }
         }
