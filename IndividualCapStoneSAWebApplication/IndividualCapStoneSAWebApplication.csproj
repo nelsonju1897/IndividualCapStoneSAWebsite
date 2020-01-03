@@ -284,7 +284,6 @@
     <Content Include="Views\AssaultRecord\Create.cshtml" />
     <Content Include="Views\AssaultRecord\Index.cshtml" />
     <Content Include="Views\Sponsor\Create.cshtml" />
-    <Content Include="Views\Survivor\RequestSponsorship.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
