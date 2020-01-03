@@ -30,6 +30,8 @@ namespace IndividualCapStoneSAWebApplication.Models
         public DbSet<Sponsor> Sponsor { get; set; }
         public DbSet<SponsorGroup> SponsorGroup { get; set; }
         public DbSet<Survivor> Survivor { get; set; }
+        public DbSet<Admin> Admin { get; set; }
+        public DbSet<ContactInfo> ContactInfo { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

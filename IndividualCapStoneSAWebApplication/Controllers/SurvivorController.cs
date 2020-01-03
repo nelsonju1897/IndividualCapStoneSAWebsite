@@ -113,5 +113,14 @@ namespace IndividualCapStoneSAWebApplication.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
+        public ActionResult PlacesToHelp()
+        {
+            
+            return View(db.ContactInfo.ToList());
+        }
+        
+        
     }
 }

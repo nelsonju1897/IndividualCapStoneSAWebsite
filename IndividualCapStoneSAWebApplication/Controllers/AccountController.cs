@@ -140,7 +140,7 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin")).ToList(), "Name", "Name");
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Super Admin")).ToList(), "Name", "Name");
             return View();
         }
 
@@ -168,6 +168,10 @@ namespace IndividualCapStoneSAWebApplication.Controllers
                     if (model.UserRoles == "Survivor")
                     {
                         return RedirectToAction("Create", "Survivor");
+                    }
+                    if (model.UserRoles == "Admin")
+                    {
+                        return RedirectToAction("Create", "Admin");
                     }
                 }
                 AddErrors(result);
