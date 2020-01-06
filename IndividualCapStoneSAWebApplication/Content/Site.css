@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.chartjs-size-monitor
+{
+    position:relative;
+}
+
+.canvas-container {
+    width: 60vw;
+    height: auto;
+    margin: 0 auto;
+}
+
+#typeChart, #relationshipChart, #alcoholAndOrDrugChart, #locationChart {
+    width: 100%;
+}

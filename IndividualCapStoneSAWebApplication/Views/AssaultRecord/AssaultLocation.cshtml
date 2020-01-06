@@ -1,0 +1,230 @@
+﻿<html>
+<head>
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #chart_container {
+            height: 400px;
+            width: 400px;
+            border: 1px solid #000;
+            padding: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-container">
+        <canvas id="locationChart"></canvas>
+    </div>
+        <script>
+        var assaultLocation = @Html.Raw(Json.Encode(ViewBag.AssaultLocation));
+        var assaultLocation2 = @Html.Raw(Json.Encode(ViewBag.AssaultLocation2));
+        var assaultLocation3 = @Html.Raw(Json.Encode(ViewBag.AssaultLocation3));
+        var assaultLocation4 = @Html.Raw(Json.Encode(ViewBag.AssaultLocation4));
+        var assaultLocation5 = @Html.Raw(Json.Encode(ViewBag.AssaultLocation5));
+        var assaultLocation6 = @Html.Raw(Json.Encode(ViewBag.AssaultLocation6));
+        var assaultLocation7 = @Html.Raw(Json.Encode(ViewBag.AssaultLocation7));
+
+        var ctx = document.getElementById('locationChart').getContext('2d');
+        var locationChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['My Home', 'Social Gathering', 'Park', 'School', 'Relatives Home', 'Work', 'Other'],
+                datasets: [{
+                    label: 'Assault Locations',
+                    data: [assaultLocation, assaultLocation2,assaultLocation3,assaultLocation4,assaultLocation5,assaultLocation6,assaultLocation7],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+        <div class="canvas-container">
+            <canvas id="alcoholAndOrDrugChart"></canvas>
+        </div>
+        <script>
+        var alcoholAndOrDrug = @Html.Raw(Json.Encode(ViewBag.AlcoholAndOrDrug));
+        var alcoholAndOrDrug2 = @Html.Raw(Json.Encode(ViewBag.AlcoholAndOrDrug2));
+        var alcoholAndOrDrug3 = @Html.Raw(Json.Encode(ViewBag.AlcoholAndOrDrug3));
+
+
+        var ctx = document.getElementById('alcoholAndOrDrugChart').getContext('2d');
+        var alcoholAndOrDrugChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Alcohol', 'Drugs', 'Both'],
+                datasets: [{
+                    label: 'Alcohol and/or Drugs',
+                    data: [alcoholAndOrDrug,alcoholAndOrDrug2,alcoholAndOrDrug3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+        <div class="canvas-container">
+            <canvas id="typeChart"></canvas>
+        </div>
+
+        <script>
+            var assaultType = @Html.Raw(Json.Encode(ViewBag.AssaultType));
+            var assaultType2 = @Html.Raw(Json.Encode(ViewBag.AssaultType2));
+            var assaultType3 = @Html.Raw(Json.Encode(ViewBag.AssaultType3));
+             var assaultType4 = @Html.Raw(Json.Encode(ViewBag.AssaultType4));
+        var ctx = document.getElementById('typeChart').getContext('2d');
+        var typeChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Attempted Rape', 'Fondling or Unwanted Sexual Touching', 'Forced sexual acts on the perpetrators body','Rape'],
+                datasets: [{
+                    label: 'Assault Type',
+                    data: [assaultType,assaultType2,,assaultType3,assaultType4],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+
+        <div class="canvas-container">
+            <canvas id="relationshipChart"></canvas>
+        </div>
+        <script>
+        var relationship = @Html.Raw(Json.Encode(ViewBag.Relationship));
+        var relationship2 = @Html.Raw(Json.Encode(ViewBag.Relationship2));
+        var relationship3 = @Html.Raw(Json.Encode(ViewBag.Relationship3));
+        var relationship4 = @Html.Raw(Json.Encode(ViewBag.Relationship4));
+        var relationship5 = @Html.Raw(Json.Encode(ViewBag.Relationship5));
+        var relationship6 = @Html.Raw(Json.Encode(ViewBag.Relationship6));
+        var relationship7 = @Html.Raw(Json.Encode(ViewBag.Relationship7));
+        var relationship8 = @Html.Raw(Json.Encode(ViewBag.Relationship8));
+        var relationship9 = @Html.Raw(Json.Encode(ViewBag.Relationship9));
+        var relationship10 = @Html.Raw(Json.Encode(ViewBag.Relationship10));
+        var relationship11 = @Html.Raw(Json.Encode(ViewBag.Relationship11));
+        var relationship12 = @Html.Raw(Json.Encode(ViewBag.Relationship12));
+        var relationship13 = @Html.Raw(Json.Encode(ViewBag.Relationship13));
+        var relationship14 = @Html.Raw(Json.Encode(ViewBag.Relationship14));
+        var relationship15 = @Html.Raw(Json.Encode(ViewBag.Relationship15));
+        var relationship16 = @Html.Raw(Json.Encode(ViewBag.Relationship16));
+        var relationship17 = @Html.Raw(Json.Encode(ViewBag.Relationship17));
+        var relationship18 = @Html.Raw(Json.Encode(ViewBag.Relationship18));
+        var relationship19 = @Html.Raw(Json.Encode(ViewBag.Relationship19));
+        var relationship20 = @Html.Raw(Json.Encode(ViewBag.Relationship20));
+
+        var ctx = document.getElementById('relationshipChart').getContext('2d');
+        var relationshipChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Boyfriend', 'Girlfriend', 'Mother','Father','Male Date','Female Date','Brother','Sister','Uncle','Aunt','Male Relative: Other','Femaile Relative: Other','Male Stranger','Female Stranger','Male Friend','Female Friend','Male Acquaintanceer','Female Acquaintance','Male Community Member','Female Community Member',],
+                datasets: [{
+                    label: 'Attacker Relationship',
+                    data: [relationship,relationship2,relationship3,relationship4,relationship5,relationship6,relationship7,relationship8,relationship9,relationship10,relationship11,relationship12,relationship13,relationship14,relationship15,relationship16,relationship17,relationship18,relationship19,relationship20],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        </script>
+</body>
+</html>
