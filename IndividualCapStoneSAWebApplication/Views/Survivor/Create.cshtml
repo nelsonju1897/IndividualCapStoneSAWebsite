@@ -34,6 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EmergencyContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <h1>Format number as follows: +1xxxxxxxxxx</h1>
                 @Html.EditorFor(model => model.EmergencyContactNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.EmergencyContactNumber, "", new { @class = "text-danger" })
             </div>

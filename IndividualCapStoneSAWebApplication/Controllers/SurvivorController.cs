@@ -6,6 +6,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Twilio.AspNet.Common;
+using Twilio.AspNet.Mvc;
+using Twilio.TwiML;
 
 namespace IndividualCapStoneSAWebApplication.Controllers
 {
@@ -119,6 +122,11 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         {
             
             return View(db.ContactInfo.ToList());
+        }
+
+        public ActionResult SendText()
+        {
+            return View();
         }
         
         
