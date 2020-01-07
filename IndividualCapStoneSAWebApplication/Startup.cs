@@ -26,31 +26,31 @@ namespace IndividualCapStoneSAWebApplication
 
 
             // In Startup iam creating first Admin Role and creating a default Admin User     
-            if (!roleManager.RoleExists("Super Admin"))
-            {
+            //if (!roleManager.RoleExists("Super Admin"))
+            //{
 
-                // first we create Admin rool    
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Super Admin";
-                roleManager.Create(role);
+            //    // first we create Admin rool    
+            //    var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+            //    role.Name = "Super Admin";
+            //    roleManager.Create(role);
 
-                //Here we create a Admin super user who will maintain the website                   
+            //    //Here we create a Admin super user who will maintain the website                   
 
-                var user = new ApplicationUser();
-                user.UserName = "Nelsonju1897";
-                user.Email = "nelsonju1897@gmail.com";
+            //    var user = new ApplicationUser();
+            //    user.UserName = "Nelsonju1897";
+            //    user.Email = "nelsonju1897@gmail.com";
 
-                string userPWD = "Deltaiota1897!";
+            //    string userPWD = "Deltaiota1897!";
 
-                var chkUser = UserManager.Create(user, userPWD);
+            //    var chkUser = UserManager.Create(user, userPWD);
 
-                //Add default User to Role Admin    
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Super Admin");
+            //    //Add default User to Role Admin    
+            //    if (chkUser.Succeeded)
+            //    {
+            //        var result1 = UserManager.AddToRole(user.Id, "Super Admin");
 
-                }
-            }
+            //    }
+            //}
 
             // creating Creating Manager role     
             if (!roleManager.RoleExists("Survivor"))

@@ -128,6 +128,12 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         {
             return View();
         }
+
+        public ActionResult InfoSites()
+        {
+            
+            return View();
+        }
         
         
     }

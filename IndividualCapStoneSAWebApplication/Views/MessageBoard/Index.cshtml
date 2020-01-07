@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+    <link href="~/Images/bootstrap-cyborg.css" rel="stylesheet" />
+<h2>Message Board</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -17,9 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.MessageBoardEntry)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SurvivorId)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -31,14 +29,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.MessageBoardEntry)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SurvivorId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MessageBoardId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MessageBoardId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MessageBoardId })
-        </td>
+        
     </tr>
 }
 

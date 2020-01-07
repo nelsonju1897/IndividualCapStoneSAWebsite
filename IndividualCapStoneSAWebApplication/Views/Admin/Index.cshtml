@@ -42,9 +42,8 @@
             @Html.DisplayFor(modelItem => item.requestToBeSponsor)
         </td>      
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SurvivorId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SurvivorId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SurvivorId })
+            @Html.ActionLink("Approve/Deny Sponsorship", "Edit", new { id=item.SurvivorId })
+            
         </td>
     </tr>
 }

@@ -140,7 +140,7 @@ namespace IndividualCapStoneSAWebApplication.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Super Admin")).ToList(), "Name", "Name");
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Sponsor")).ToList(), "Name", "Name");
             return View();
         }
 

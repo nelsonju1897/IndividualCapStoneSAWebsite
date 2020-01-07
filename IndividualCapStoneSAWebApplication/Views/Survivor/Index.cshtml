@@ -2,27 +2,25 @@
 @{
     ViewBag.Title = "Index";
 }
+    <link href="~/Images/bootstrap-cyborg.css" rel="stylesheet" />
+<h2>Survivor</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Click Here for Resources", "PlacesToHelp")
-</p>
-<p>
-    @Html.ActionLink("Create New Journal Entry", "Create", "PrivateJournal")
-</p>
-<p>
-    @Html.ActionLink("View My Journals", "Index", "PrivateJournal")
-</p>
 <p>
     @Html.ActionLink("Report Your Assault", "Create", "AssaultRecord")
 </p>
 <p>
-    @Html.ActionLink("Click Here to Send Text Message", "SendSms", "TextMessage")
+    @Html.ActionLink("Click Here to Send Text Message to Your Emergency Contact Number", "SendSms", "TextMessage")
 </p>
 <p>
-    
+    @Html.ActionLink("Click Here to find information to help process your experience", "InfoSites") | @Html.ActionLink("Click Here for Resources", "PlacesToHelp")
 </p>
+<p>
+    @Html.ActionLink("Create New Journal Entry", "Create", "PrivateJournal") | @Html.ActionLink("View My Journals", "Index", "PrivateJournal")
+</p>
+<p>
+    @Html.ActionLink("Click Here to Create New Message Board Post", "Create", "MessageBoard") | @Html.ActionLink("Click Here to View Message Board Posts", "Index", "MessageBoard")
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -39,6 +37,7 @@
         </th>
         <th></th>
     </tr>
+
 
     @foreach (var item in Model)
     {
@@ -57,11 +56,9 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.SurvivorId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.SurvivorId }) |
-
-                @*@Html.ActionLink("Delete", "Delete", new { id = item.SurvivorId })*@
+                @Html.ActionLink("Details", "Details", new { id = item.SurvivorId })               
             </td>
         </tr>
     }
-
 </table>
+<h4>If you are at a place where you believe that you are able to help another survivor through the difficulty of a sexual assault, click edit and click on Request to be sponsor. An Admin will review this request and approve or deny sponsorship.</h4>

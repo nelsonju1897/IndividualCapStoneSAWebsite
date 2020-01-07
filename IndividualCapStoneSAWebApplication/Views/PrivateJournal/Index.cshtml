@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<IndividualCapStoneSAWebApplication.Models.PrivateJournal>
-
+    <link href="~/Images/bootstrap-cyborg.css" rel="stylesheet" />
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -24,7 +24,7 @@
         </td>        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PrivateJournalId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PrivateJournalId }) |
+            
             @Html.ActionLink("Delete", "Delete", new { id=item.PrivateJournalId })
         </td>
     </tr>

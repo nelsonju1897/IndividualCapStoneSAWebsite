@@ -23,7 +23,7 @@ namespace IndividualCapStoneSAWebApplication.Controllers
             Survivor survivor = db.Survivor.FirstOrDefault(s => s.ApplicationId == userId);
 
             var accountSid = "AC9e820c12c7a044f14cbb16c10f4222f2";
-            var authToken = "0af6a3d4bad4f3e2a3a80de3094a2bc0";
+            var authToken = APIInfo.TrilioAuthToken;
             Twilio.TwilioClient.Init(accountSid, authToken);
 
             var to = new Twilio.Types.PhoneNumber(survivor.EmergencyContactNumber);
